@@ -31,8 +31,8 @@ inp.on("close", () => {
     var air = 0
 
     for(var i = 1 ; i < len-1 ; i++){
-        if (Math.min(left_arr[i-1], right_arr[i+1]) > arr[i]){
-            air += Math.min(left_arr[i-1], right_arr[i+1]) - arr[i]
+        if (Math.min(left_arr[i], right_arr[i]) > arr[i]){
+            air += Math.min(left_arr[i], right_arr[i]) - arr[i]
         }
     }
 
