@@ -28,7 +28,15 @@ inp.on("close", () => {
         right_arr[i] = Math.max(right_arr[i+1], arr[i+1])
     }
 
-    console.log(left_arr, right_arr)
+    var air = 0
+
+    for(var i = 1 ; i < len-1 ; i++){
+        if (Math.min(left_arr[i-1], right_arr[i+1]) > arr[i]){
+            air += Math.min(left_arr[i-1], right_arr[i+1]) - arr[i]
+        }
+    }
+
+    console.log(air)
     
     
 });
