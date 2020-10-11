@@ -12,11 +12,23 @@ inp.on("line", (data) => {
 });
 
 inp.on("close", () => {
-    var arr1 = userInput[0].split(' ').map(Number)
-    var arr2 = userInput[1].split(' ').map(Number)
-    var arr3 = userInput[2].split(' ').map(Number)
+    var len = Number(userInput[0])
+    var sum = 0
+    const arr = userInput[1].split(' ').map(Number)
+    let left_arr = new Array(arr.length)
+    let right_arr = new Array(arr.length)
+    left_arr[0] = Number.NEGATIVE_INFINITY
+    right_arr[len-1] = Number.NEGATIVE_INFINITY
     
-    arr2.sort(function(a,b){return a-b})
-    arr3.sort(function(a,b){return b-a})
-    console.log((arr2.concat(arr3)).join(' '))
+    for (var i =1 ; i < len ; i++){
+        left_arr[i] = Math.max(left_arr[i-1], arr[i-1])
+    }
+
+    for (var i = len-2 ; i >= 0 ; i--){
+        right_arr[i] = Math.max(right_arr[i+1], arr[i+1])
+    }
+
+    console.log(left_arr, right_arr)
+    
+    
 });

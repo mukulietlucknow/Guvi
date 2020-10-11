@@ -12,31 +12,11 @@ inp.on("line", (data) => {
 });
 
 inp.on("close", () => {
-  var data = {}
-  const len = Number(userInput[0])
-  const arr = userInput[1].split(' ').map(Number)
-  for(const num of arr){
-      if (data[num]){
-          data[num] += 1
-      }else{
-          data[num] = 1
-      }
-  }
-  
-  var sortable = [];
-    for (var index in data) {
-        sortable.push([index, data[index]]);
-    }
+    var arr1 = userInput[0].split(' ').map(Number)
+    var arr2 = userInput[1].split(' ').map(Number)
+    var arr3 = userInput[2].split(' ').map(Number)
     
-    sortable.sort(function(a, b) {
-        return a[1] - b[1];
-    });
-  
-  var str = ''
-  
-  for (const datum of sortable){
-      str += datum[0]+' '
-  }
-  console.log(str.trim())
-  
+    arr2.sort(function(a,b){return a-b})
+    arr3.sort(function(a,b){return b-a})
+    console.log((arr2.concat(arr3)).join(' '))
 });
